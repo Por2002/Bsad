@@ -12,15 +12,16 @@
             else{
               $totalqty = "";
             }
-          $navh = `<nav class="navbar sticky-top bg-white">
+          $navh = '<nav class="navbar sticky-top bg-white">
           <div class="container">
               <nav class="navbar navbar-expand">
-                  <a class="navbar-brand" href="index.html">
+                  <a class="navbar-brand" href="index.php">
                       <img src="picture/logo.png" width="80" height="50">
                   </a>
                   <div class="collapse navbar-collapse">
                       <div class="navbar-nav">
-                          <a class="nav-link" href="lodraka.html?view=discount">สินค้าทั้งหมด</a>
+                          <a class="nav-link" href="category.php?cat=all">สินค้าทั้งหมด</a>
+                          <a class="nav-link" href="order.php">รายการสั่งซื้อ</a>
                       </div>
                   </div>
               </nav>
@@ -29,24 +30,26 @@
                       <input class="form-control me-2" type="search" placeholder="ค้นหา" aria-label="Search" id="boxsearch">
                   </form>
                   
-                  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                      <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                  <button class="navbar-toggler" href="cart.php" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                      <a href="cart.php"><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
                   </button>
                   <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                      <i class="fa-solid fa-user fa-xl"></i>
+                      <a href="account.php"><i class="fa-solid fa-user fa-xl"></i></a>
                   </button>
+                  <p class="text-black"> '.$_SESSION['username'].' </p> <a href="index.php?logout="1"" class="nav-link">Logout</a></p>
               </nav>
           </div>
-      </nav>`;
-        }else {    $navh = `<nav class="navbar sticky-top bg-white">
+      </nav>';
+        }else {    $navh = '<nav class="navbar sticky-top bg-white">
             <div class="container">
                 <nav class="navbar navbar-expand">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="index.php">
                         <img src="picture/logo.png" width="80" height="50">
                     </a>
                     <div class="collapse navbar-collapse">
                         <div class="navbar-nav">
-                            <a class="nav-link" href="lodraka.html?view=discount">สินค้าทั้งหมด</a>
+                            <a class="nav-link" href="category.php?cat=all">สินค้าทั้งหมด</a>
+                            <a class="nav-link" href="order.php">รายการสั่งซื้อ</a>
                         </div>
                     </div>
                 </nav>
@@ -55,21 +58,21 @@
                         <input class="form-control me-2" type="search" placeholder="ค้นหา" aria-label="Search" id="boxsearch">
                     </form>
                     
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                        <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                    <button class="navbar-toggler" href="cart.php" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <a href="cart.php"><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
                     </button>
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                        <i class="fa-solid fa-user fa-xl"></i>
+                        <a href="account.php"><i class="fa-solid fa-user fa-xl"></i></a>
                     </button>
                 </nav>
             </div>
-        </nav>`;
+        </nav>';
         }
         echo $navh;
     }
         
     function footer() {
-        $footer = `<div class="footer-basic pb-0">
+        $footer = '<div class="footer-basic pb-0">
         <footer>
             <div class="social">
                 <a href="https://www.facebook.com/ITLadkrabang"><i class="fa-brands fa-square-facebook"></i></a>
@@ -84,7 +87,7 @@
             </ul>
             <p class="copyright mb-0 pb-3">© 2023 MoreThanBike Co., Ltd. มอร์แดนไบค์</p>
         </footer>
-    </div>`;
+    </div>';
         echo $footer;
     }
 ?>
