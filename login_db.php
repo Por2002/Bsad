@@ -8,7 +8,7 @@ if (isset($_POST['login'])){
     $password = $_POST['password'];
 }
 if (count($error) == 0){
-    $query = "SELECT * FROM registersys WHERE username = '$username' and password = '$password'";
+    $query = "SELECT * FROM user WHERE username = '$username' and password = '$password'";
     $ret = $db->query($query);
     $row = $ret->fetchArray(SQLITE3_ASSOC);
 }
