@@ -26,7 +26,7 @@
                   </div>
               </nav>
               <nav class="navbar navbar-expand-right">
-                  <form class="d-flex m-0" role="search">
+                  <form class="d-flex m-0" role="search" action="category.php" method="GET">
                       <input class="form-control me-2" type="search" placeholder="ค้นหา" aria-label="Search" id="boxsearch">
                   </form>
                   
@@ -54,8 +54,8 @@
                     </div>
                 </nav>
                 <nav class="navbar navbar-expand-right">
-                    <form class="d-flex m-0" role="search">
-                        <input class="form-control me-2" type="search" placeholder="ค้นหา" aria-label="Search" id="boxsearch">
+                    <form class="d-flex m-0" role="search" action="category.php" method="GET">
+                        <input class="form-control me-2" type="text" name="search" placeholder="ค้นหา" aria-label="Search" id="boxsearch">
                     </form>
                     
                     <button class="navbar-toggler" href="cart.php" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -89,5 +89,20 @@
         </footer>
     </div>';
         echo $footer;
+    }
+
+    function card($cardname, $cardprice, $cardpic, $cardid, $cardbrand) {
+        floatval(preg_replace('/[^\d.],/', '', '"'.$cardprice.'"'));
+        $cardprice = number_format($cardprice, 2);
+        $card = '
+        <div class="col" id="box" style="margin-bottom: 50px;">
+            <a href="prop.php?idg=' . $cardid . '">
+            <img src="'.$cardpic.'" alt="" width="240" height="240" id="img-best">
+            </a>    
+            <p class="name m-0">'.$cardname.'</p>
+            <p>'.$cardbrand.'</p>
+            <p class="cash1">฿'.$cardprice.'</p>
+        </div>';
+    echo $card;
     }
 ?>

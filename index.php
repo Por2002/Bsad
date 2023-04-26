@@ -47,6 +47,7 @@ if(isset($_POST['add'])){
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;1,900&family=Prompt:wght@300&family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="bestsell.css">
     <title>Document</title>
 
     <style>
@@ -87,6 +88,27 @@ if(isset($_POST['add'])){
             </button>
           </div>
     </div>
+
+    <div class="container" style="background-color: white; margin-top: 23px; border-radius: 5px;">
+        <div class="row">
+            <h4 class="col" style="margin-left: 70px; margin-top: 30px;">สินค้า</h4>
+            <a href="category.php?cat=all" class="col" style="margin-left: 900px; margin-top: 30px; color: black; text-decoration: none;"><h4>ดูทั้งหมด</h4></a>
+        </div>
+        <div class="one" id="bestsell">
+          <div class="row" id="colum1">
+            <?php
+
+            $query = "SELECT * FROM product ORDER BY name ASC limit 8";
+            $ret = $db->query($query);
+            while($row = $ret->fetchArray(SQLITE3_ASSOC)){
+            card($row['name'], $row['price'], $row['pic1'], $row['proid'], $row['brand']);
+            }
+            ?>
+          </div>
+        </div>
+    </div>
+
+    
     <?php footer(); ?>
 </body>
 </html>

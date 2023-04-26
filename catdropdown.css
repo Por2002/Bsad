@@ -1,0 +1,55 @@
+#panelmen,
+#men {
+    padding: 0px;
+}
+
+#panelmen {
+    display: none;
+}
+
+#panelwomen,
+#women {
+    padding: 0px;
+}
+
+#panelwomen {
+    display: none;
+    color: black;
+}
+
+#panelchild,
+#child {
+    padding: 0px;
+}
+
+#panelchild {
+    display: none;
+    color: black;
+}
+
+#women {
+    margin-top: 15px;
+}
+
+#child {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#panelmen {
+    color: #555555;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+#panelwomen {
+    color: gray;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+#panelchild {
+    color: gray;
+    margin-top: 10px;
+    margin-left: 20px;
+}
