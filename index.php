@@ -69,13 +69,13 @@ if(isset($_POST['add'])){
               <button type="button" data-bs-target="#carousel-slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner" role="listbox" >
-              <div class="carousel-item active" onclick="location.href = 'product.html?product=22';">
+              <div class="carousel-item active">
                 <img src="picture/banner_2.png" class="d-block w-100" alt="...">
               </div>
-              <div class="carousel-item" onclick="location.href = 'product.html?product=25';">
+              <div class="carousel-item">
                 <img src="picture/banner_1.png" class="d-block w-100" alt="...">
               </div>
-              <div class="carousel-item" onclick="location.href = 'lodraka.html?view=discount';">
+              <div class="carousel-item">
                 <img src="picture/banner_3.png" class="d-block w-100" alt="...">
               </div>
             </div>
