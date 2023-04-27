@@ -57,7 +57,7 @@ if (isset($_GET['logout'])){
             if(isset($_GET['idg'])){
                 $cate = $_GET['idg'];
 
-                $sql11 = "SELECT * FROM customerorder";
+                $sql11 = "SELECT * FROM customerorder where coid = ".($cate)."";
                 $ret11 = $db->query($sql11);
                 $retc = $db->query($sql11);
                 $rowc = $retc->fetchArray(SQLITE3_ASSOC);
