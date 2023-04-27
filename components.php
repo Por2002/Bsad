@@ -49,7 +49,7 @@
                     <div class="collapse navbar-collapse">
                         <div class="navbar-nav">
                             <a class="nav-link" href="category.php?cat=all">สินค้าทั้งหมด</a>
-                            <a class="nav-link" href="order.php">รายการสั่งซื้อ</a>
+                            <a class="nav-link" href="order.php">ประวัติการสั่งซื้อ</a>
                         </div>
                     </div>
                 </nav>
@@ -109,24 +109,50 @@
     function detail($dedesc, $deprice, $debrand, $depic1, $depic2, $depic3, $depic4, $deid, $dequan) {
         floatval(preg_replace('/[^\d.],/', '', '"'.$deprice.'"'));
         $deprice = number_format($deprice, 2);
-        $debox = '<div class="col-5" id="pic">
-        <img src="'.$depic1.'" class="propic">
-        <img src="'.$depic2.'" class="propic">
-        <img src="'.$depic3.'" class="propic">
-        <img src="'.$depic4.'" class="propic">
-    </div>
-    <div class="col-4">
-        <h4 id="type">'.$debrand.'</h4>
-        <h5 id="price">฿ '.$deprice.'</h5>
-        <p id="desc">'.$dedesc.'</p>
-        <h5 id="quan">สินค้าคงเหลือ '.$dequan.' ชิ้น</h5>
-        <form action="" method="POST">
-        <p id="jum">จำนวน <input class="input-num" type="number" name="qty" value="1" max="'.$dequan.'"> ชิ้น</p>
-        <button type="submit" id="butcart" name="add">เพิ่มในตะกร้า
-            <input type="hidden" name="cardid" value="'.$deid.'">
-        </button>
-        </form>
-    </div>';
+        if($dequan > 0) {
+        $debox = '
+        <div class="col-5" id="pic">
+            <img src="'.$depic1.'" class="propic">
+            <img src="'.$depic2.'" class="propic">
+            <img src="'.$depic3.'" class="propic">
+            <img src="'.$depic4.'" class="propic">
+        </div>
+        <div class="col-4">
+            <h4 id="type">'.$debrand.'</h4>
+            <h5 id="price">฿ '.$deprice.'</h5>
+            <p id="desc">'.$dedesc.'</p>
+            <h5 id="quan">สินค้าคงเหลือ '.$dequan.' ชิ้น</h5>
+        
+            <form action="" method="POST">
+            <p id="jum">จำนวน <input class="input-num" type="number" name="qty" value="1" max="'.$dequan.'"> ชิ้น</p>
+                <button type="submit" id="butcart" name="add">เพิ่มในตะกร้า
+                    <input type="hidden" name="cardid" value="'.$deid.'">
+                </button>
+            </form>
+        </div>';
+        }
+
+        else {
+        $debox = '
+        <div class="col-5" id="pic">
+            <img src="'.$depic1.'" class="propic">
+            <img src="'.$depic2.'" class="propic">
+            <img src="'.$depic3.'" class="propic">
+            <img src="'.$depic4.'" class="propic">
+        </div>
+        <div class="col-4">
+            <h4 id="type">'.$debrand.'</h4>
+            <h5 id="price">฿ '.$deprice.'</h5>
+            <p id="desc">'.$dedesc.'</p>
+            <h5 id="quan">สินค้าคงเหลือ '.$dequan.' ชิ้น</h5>
+        
+            <form action="" method="POST">
+            <p id="jum">จำนวน <input class="input-num" type="number" name="qty" value="1" max="'.$dequan.'"> ชิ้น</p>
+                <button type="button" id="butcart" name="add">สินค้าหมด
+                </button>
+            </form>
+        </div>';
+        }
     echo $debox;
     }
 ?>

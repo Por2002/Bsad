@@ -24,9 +24,9 @@ if (isset($_GET['logout'])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;1,900&family=Prompt:wght@300&family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="lodraka.css">
+    <link rel="stylesheet" href="style/navbar.css">
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/lodraka.css">
     <title>Document</title>
 
     <style>
@@ -52,17 +52,7 @@ if (isset($_GET['logout'])){
     <div class="container" style="background-color: white; border-radius: 5px; margin-bottom: 20px; margin-top: 50px;" id="con1">
         <div class="one">
             <h2 class="fw-bold p-4 text-black">รายละเอียดการสั่งซื้อ</h2>
-            <p class="p-2 mb-0">เลขที่คำสั่งซื้อ :</p>
-            <div class="row">
-                <p class="p-2 mb-0">ชื่อสินค้า :</p>
-                <p class="p-2 mb-0">จำนวน :</p>
-                <p class="p-2 mb-0">ราคา :</p>
-                <p class="p-2 mb-0">วันที่ :</p>
-                <p class="p-2 mb-0">ชื่อ-ที่อยู่ :</p>
-                <p class="p-2 mb-0">สถานะ :</p>
-            </div>
             
-
             <?php
             if(isset($_GET['idg'])){
                 $cate = $_GET['idg'];
@@ -72,20 +62,10 @@ if (isset($_GET['logout'])){
                 $retc = $db->query($sql11);
                 $rowc = $retc->fetchArray(SQLITE3_ASSOC);
 
-                // echo '<table class="table bg-white">
-                // <thead>
-                //     <tr>
-                //         <th style="width: 10%;">เลขที่คำสั่งซื้อ</th>
-                //         <th style="width: 40%;">ชื่อสินค้า</th>
-                //         <th style="width: 10%;">จำนวน</th>
-                //         <th style="width: 20%;">ราคา</th>
-                //         <th style="width: 20%;">สถานะ</th>
-                //     </tr>
-                // </thead>';
 
-                while($row11 = $ret11->fetchArray(SQLITE3_ASSOC)){
+                $row11 = $ret11->fetchArray(SQLITE3_ASSOC);
                     
-                    $sql12 = "SELECT * FROM customerorder_product where copid = ".($row11['coid'])." ";
+                    $sql12 = "SELECT * FROM customerorder_product where copid = ".($cate)." ";
                     $ret12 = $db->query($sql12);
 
                     
@@ -94,24 +74,14 @@ if (isset($_GET['logout'])){
                         
                         $sql13 = "SELECT * FROM product where proid = ".($row12['ProdID'])."";
                         $ret13 = $db->query($sql13);
-                        echo '<p class="p-2 mb-0">เลขที่คำสั่งซื้อ : '.$row11['coid'].'</p>';
+                        echo '<p class="p-2 mb-0">เลขที่คำสั่งซื้อ : '.$cate.'</p>';
                         
                         while($row13 = $ret13->fetchArray(SQLITE3_ASSOC)){
                             
 
                             $orpirce = (int)$row13['price'];
                             $orqty = (int)$row12['quantity'];
-                    //         echo '<tbody>
-                    // <tr>
-                    // <td>'.$row11['coid'].'</td>
-                    // <td> <a href="salecheck.php" style="color: black;"><img style="width: 15%;" src="'.$row13['pic1'].'" class="img-fluid">'.$row13['name'].'</a> </td>
-                    // <td>'.$row12['quantity'].'</td>
-                    // <td>'.number_format($orpirce * $orqty, 2).'</td>
-                    // <td class="status '.$row11['status'].'">'.$row11['status'].'</td>
-                    
-                    // </tr>
-                    // </tbody>
-                    // ';
+                            
                             echo '
                             <div class="row">
                                 <p class="p-2 mb-0">ชื่อสินค้า : '.$row13['name'].'</p>
@@ -124,7 +94,7 @@ if (isset($_GET['logout'])){
                         }
                     }
                 
-                }
+                
             }
 
             ?>

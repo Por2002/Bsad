@@ -24,8 +24,8 @@ if (isset($_GET['logout'])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;1,900&family=Prompt:wght@300&family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="style/navbar.css">
+    <link rel="stylesheet" href="style/footer.css">
     <title>Document</title>
 
     <style>
@@ -85,7 +85,7 @@ if (isset($_GET['logout'])){
 
                     <?php
                     if ($_SESSION['role'] == 'customer') {
-                        $sql11 = "SELECT * FROM customerorder where id = ".($_SESSION['userid'])." and status in ('อยู่ระหว่างการจัดส่ง', 'สั่งซื้อสำเร็จ')";
+                        $sql11 = "SELECT * FROM customerorder where id = ".($_SESSION['userid'])." and status in ('อยู่ระหว่างการจัดส่ง', 'สั่งซื้อสำเร็จ', 'เสร็จสิ้น')";
                         $ret11 = $db->query($sql11);
                         $retc = $db->query($sql11);
                         $rowc = $retc->fetchArray(SQLITE3_ASSOC);
@@ -98,7 +98,7 @@ if (isset($_GET['logout'])){
                         echo '<table class="table bg-white">
                         <thead>
                             <tr>
-                                <th style="width: 10%;">เลขที่คำสั่งซื้อ</th>
+                                <th style="width: 10%;">รหัสคำสั่งซื้อ</th>
                                 <th style="width: 40%;">ชื่อสินค้า</th>
                                 <th style="width: 10%;">จำนวน</th>
                                 <th style="width: 20%;">ราคา</th>
@@ -153,7 +153,7 @@ if (isset($_GET['logout'])){
                         echo '<table class="table bg-white">
                         <thead>
                             <tr>
-                                <th style="width: 10%;">เลขที่คำสั่งซื้อ</th>
+                                <th style="width: 10%;">รหัสคำสั่งซื้อ</th>
                                 <th style="width: 40%;">ชื่อสินค้า</th>
                                 <th style="width: 10%;">จำนวน</th>
                                 <th style="width: 20%;">ราคา</th>
@@ -208,7 +208,7 @@ if (isset($_GET['logout'])){
                         echo '<table class="table bg-white">
                         <thead>
                             <tr>
-                                <th style="width: 10%;">เลขที่คำสั่งซื้อ</th>
+                                <th style="width: 10%;">รหัสคำสั่งซื้อ</th>
                                 <th style="width: 40%;">ชื่อสินค้า</th>
                                 <th style="width: 10%;">จำนวน</th>
                                 <th style="width: 20%;">ราคา</th>

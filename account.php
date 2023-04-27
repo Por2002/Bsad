@@ -24,8 +24,8 @@ if (isset($_GET['logout'])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;1,900&family=Prompt:wght@300&family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="style/navbar.css">
+    <link rel="stylesheet" href="style/footer.css">
     <title>Document</title>
 
     <style>
@@ -41,35 +41,30 @@ if (isset($_GET['logout'])){
         <div class="container-xxl">
             <div class="row">
                 <div class="col-6 bg-white rounded p-5">
-                    <h3 class="mb-4">ข้อมูลผู้ใช้</h3>
-                    <h3 class="mb-4">ชื่อผู้ใช้ : <?php echo $_SESSION['username'] ;?></h3>
-                    <h3 class="mb-4">ตำแหน่ง : <?php echo $_SESSION['role'] ;?></h3>
+                    <h3 class="fw-bold p-2 text-black">ข้อมูลผู้ใช้</h3>
+                    <h3 class="p-2">ชื่อผู้ใช้ : <?php echo $_SESSION['username'] ;?></h3>
+                    <h3 class="p-2">ตำแหน่ง : <?php echo $_SESSION['role'] ;?></h3>
+
+                    
+                    <?php
+
+                    if ($_SESSION['role'] == 'warehouse'){
+                        echo '<a href="adminpage.php" class="btn btn-success btn-block mt-3">จัดการข้อมูลสินค้า</a>';
+                        echo '<a href="status.php" class="btn btn-success btn-block mt-3 ms-3">จัดการสถานะการจัดส่ง</a>';
+                    }
+
+                    elseif ($_SESSION['role'] == 'sale'){
+                        echo '<a href="order.php" class="btn btn-success btn-block mt-3">แสดงข้อมูลการสั่งซื้อ</a>';
+                    }
+                    ?>
 
 
-        <?php
-
-        if ($_SESSION['role'] == 'sale' or $_SESSION['role'] == 'warehouse'){
-            echo '<a href="adminpage.php" class="btn btn-success btn-block mt-3">Manage Data</a>';
-            $sql = "SELECT count(coid) FROM customerorder WHERE status in ('อยู่ระหว่างการจัดส่ง', 'สั่งซื้อสำเร็จ')";
-            $ret = $db->query($sql);
-            $row = $ret->fetchArray(SQLITE3_ASSOC);
-        }
-        else {
-            $sql = "SELECT count(coid) FROM customerorder WHERE id = ".$_SESSION['userid']." and status in ('อยู่ระหว่างการจัดส่ง', 'สั่งซื้อสำเร็จ')";
-            $ret = $db->query($sql);
-            $row = $ret->fetchArray(SQLITE3_ASSOC);
-        }
-        ?>
-
-        </div>
-        <div class="col-6">
-            <div class="row mx-4 mb-4 bg-white rounded p-5">
-                <a href="order.php" style="color: #198754;"><h3>กำลังดำเนินการ <?=$row['count(coid)']?> รายการ</h3></a>
-            </div>
-
+                    <div class="pt-5">
+                        <h6 class="mb-0"><a href="index.php" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>กลับสู่หน้าหลัก</a></h6>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
     </section>    
     <?php footer(); ?>
 </body>

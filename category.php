@@ -48,10 +48,10 @@ if(isset($_POST['add'])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;1,900&family=Prompt:wght@300&family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="catdropdown.css">
-    <link rel="stylesheet" href="lodraka.css">
+    <link rel="stylesheet" href="style/navbar.css">
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/catdropdown.css">
+    <link rel="stylesheet" href="style/lodraka.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Document</title>
 
@@ -97,6 +97,7 @@ if(isset($_POST['add'])){
                         elseif(isset($_GET['search'])){
                             $search = $_GET['search'];
                             echo ''.$search.'';
+
                           }
                         ?>
                     </p>

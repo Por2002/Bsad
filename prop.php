@@ -14,29 +14,32 @@ if(isset($_POST['add'])){
     
     
   }
-  if(isset($_SESSION['cart'])){
-    $itme_array_id = array_column($_SESSION['cart'],"cardid"); 
-    if(in_array($_POST['cardid'],$itme_array_id)){
-      $indexa = array_search($_POST['cardid'],$itme_array_id);
-       $_SESSION['cart'][$indexa]['qty'] +=$_POST['qty'];
+    if(isset($_SESSION['cart'])) {
+        $itme_array_id = array_column($_SESSION['cart'],"cardid"); 
+        if(in_array($_POST['cardid'],$itme_array_id)) {
+            $indexa = array_search($_POST['cardid'],$itme_array_id);
+            $_SESSION['cart'][$indexa]['qty'] += $_POST['qty'];
+        }
+        else {
+        $item_array = array(
+        'cardid'=>$_POST['cardid'],
+        'qty' => $_POST['qty']
+        );
+        $_SESSION['cart'][] = $item_array;
+        }
+
     }
-    else{
-    $item_array = array(
-      'cardid'=>$_POST['cardid'],
-      'qty' => $_POST['qty']
-    );
-    $_SESSION['cart'][] = $item_array;
-    }
-  }else{
+    else {
     $item_array = array(
       'cardid'=>$_POST['cardid'],
       'qty' => $_POST['qty']
     );
     $_SESSION['cart'][0] = $item_array;
  
-   }
+    }
 }
 ?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -47,11 +50,11 @@ if(isset($_POST['add'])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;1,900&family=Prompt:wght@300&family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="catdropdown.css">
-    <link rel="stylesheet" href="lodraka.css">
-    <link rel="stylesheet" href="product.css">
+    <link rel="stylesheet" href="style/navbar.css">
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/catdropdown.css">
+    <link rel="stylesheet" href="style/lodraka.css">
+    <link rel="stylesheet" href="style/product.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Document</title>
 

@@ -45,9 +45,10 @@ if(isset($_POST['add'])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;1,900&family=Prompt:wght@300&family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="bestsell.css">
+    <link rel="stylesheet" href="style/navbar.css">
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/bestsell.css">
+    <link rel="stylesheet" href="style/promotion.css">
     <title>Document</title>
 
     <style>
@@ -59,23 +60,23 @@ if(isset($_POST['add'])){
 </head>
 <body>
     <?php navhead(); ?>
+    <!-- Carousel -->
     <div class="container p-0">
         <div id="carousel-slider" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carousel-slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carousel-slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
               <button type="button" data-bs-target="#carousel-slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
-              <button type="button" data-bs-target="#carousel-slider" data-bs-slide-to="3" aria-label="Slide 4"></button>
             </div>
             <div class="carousel-inner" role="listbox" >
               <div class="carousel-item active" onclick="location.href = 'product.html?product=22';">
-                <img src="img/banner/ad02.jpg" class="d-block w-100" alt="...">
+                <img src="picture/banner_2.png" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item" onclick="location.href = 'product.html?product=25';">
-                <img src="img/banner/ad05.png" class="d-block w-100" alt="...">
+                <img src="picture/banner_1.png" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item" onclick="location.href = 'lodraka.html?view=discount';">
-                <img src="img/banner/ad04.png" class="d-block w-100" alt="...">
+                <img src="picture/banner_3.png" class="d-block w-100" alt="...">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carousel-slider" data-bs-slide="prev">
