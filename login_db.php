@@ -22,8 +22,8 @@ if ($row){
     header('location:index.php');
 } 
 else{
-    array_push($error,'Wrong username/password combination');
-    $_SESSION['error'] = 'Wrong username/password combination';
+    array_push($error,'ชื่อผู้ใช้หรือรหัสผ่านผิดโปรดลองอีกครั้ง');
+    $_SESSION['error'] = 'ชื่อผู้ใช้หรือรหัสผ่านผิดโปรดลองอีกครั้ง';
     header('location:login.php');
     
 }

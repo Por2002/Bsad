@@ -38,31 +38,39 @@ if (isset($_GET['logout'])){
 <body>
     <?php navhead(); ?>
     <section class="home-wrapper-1 py-5">
-<div class="container-xxl">
-    <div class="row">
-        <div class="col-5 bg-white rounded p-5">
-    <h3 class="mb-4">ข้อมูลผู้ใช้</h3>
-    <h3 class="mb-4">Username : <?php echo $_SESSION['username'] ;?></h3>
-    <h3 class="mb-4">ตำแหน่ง : <?php echo $_SESSION['role'] ;?></h3>
+        <div class="container-xxl">
+            <div class="row">
+                <div class="col-6 bg-white rounded p-5">
+                    <h3 class="mb-4">ข้อมูลผู้ใช้</h3>
+                    <h3 class="mb-4">ชื่อผู้ใช้ : <?php echo $_SESSION['username'] ;?></h3>
+                    <h3 class="mb-4">ตำแหน่ง : <?php echo $_SESSION['role'] ;?></h3>
 
-</h3>
 
-<?php if ($_SESSION['role'] == 'seller' or $_SESSION['role'] == 'warehouse'){
-  echo '<a href="adminpage.php" class="btn btn-primary btn-block mb-4">Manage Data</a>';
-} 
-$sql = "SELECT count(coid) FROM customerorder WHERE id = ".$_SESSION['userid']." and status in ('in progress', 'new')";
-    $ret = $db->query($sql);
-    $row = $ret->fetchArray(SQLITE3_ASSOC);?>
+        <?php
+
+        if ($_SESSION['role'] == 'sale' or $_SESSION['role'] == 'warehouse'){
+            echo '<a href="adminpage.php" class="btn btn-success btn-block mt-3">Manage Data</a>';
+            $sql = "SELECT count(coid) FROM customerorder WHERE status in ('อยู่ระหว่างการจัดส่ง', 'สั่งซื้อสำเร็จ')";
+            $ret = $db->query($sql);
+            $row = $ret->fetchArray(SQLITE3_ASSOC);
+        }
+        else {
+            $sql = "SELECT count(coid) FROM customerorder WHERE id = ".$_SESSION['userid']." and status in ('อยู่ระหว่างการจัดส่ง', 'สั่งซื้อสำเร็จ')";
+            $ret = $db->query($sql);
+            $row = $ret->fetchArray(SQLITE3_ASSOC);
+        }
+        ?>
+
         </div>
-        <div class="col-7">
+        <div class="col-6">
             <div class="row mx-4 mb-4 bg-white rounded p-5">
-                <a href="order.php"><h3>กำลังดำเนินการอีก <?=$row['count(coid)']?> รายการ</h3></a>
+                <a href="order.php" style="color: #198754;"><h3>กำลังดำเนินการ <?=$row['count(coid)']?> รายการ</h3></a>
             </div>
 
+            </div>
         </div>
     </div>
-</div>
-      </section>    
+    </section>    
     <?php footer(); ?>
 </body>
 </html>

@@ -1,3 +1,8 @@
+<?php
+require_once('components.php');
+session_start();
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,6 +25,7 @@
     </style>
 </head>
 <body>
+    <?php navhead(); ?>
     <section class="home-wrapper-1 py-5">
         <div class="container-xxl text-center">
             <div class="row w-50 m-auto">
@@ -67,5 +73,7 @@
             </div>
         </div>
     </section>
+
+    <?php footer(); ?>
 </body>
 </html>

@@ -37,7 +37,6 @@ if(isset($_POST['add'])){
    }
 }
 ?>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -52,6 +51,7 @@ if(isset($_POST['add'])){
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="catdropdown.css">
     <link rel="stylesheet" href="lodraka.css">
+    <link rel="stylesheet" href="product.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Document</title>
 
@@ -61,8 +61,25 @@ if(isset($_POST['add'])){
             font-family: 'Kanit', sans-serif;
         }
 
-        #img-best {
-            margin-top: 8px;
+        #quan {
+            font-size: 16px;
+            margin-top: 30px;
+            color: grey;
+        }
+
+        #desc {
+            font-weight: lighter;
+        }
+
+        .input-num {
+            width: 40px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        #jum {
+            font-size: 16px;
+            font-weight: lighter;
         }
     </style>
     
@@ -84,20 +101,13 @@ if(isset($_POST['add'])){
                 <div class="col-sm">
                     <p class="topic" id="topic">
                         <?php
-                        if(isset($_GET['cat'])){
-      
-                            $cate = $_GET['cat'];
-                            if($cate == 'all'){
-                              echo 'สินค้าทั้งหมด';
-                            }
-                            else{
-                              echo ''.$cate.'';
-                            }
-                          }
-                        elseif(isset($_GET['search'])){
-                            $search = $_GET['search'];
-                            echo ''.$search.'';
-                          }
+                        if(isset($_GET['idg'])){
+                            $cate = $_GET['idg'];
+                            $query = "SELECT * FROM product WHERE proid = '$cate'";
+                            $ret = $db->query($query);
+                            $row = $ret->fetchArray(SQLITE3_ASSOC);
+                            echo $row['name'];
+                        }
                         ?>
                     </p>
                 </div>
@@ -119,39 +129,18 @@ if(isset($_POST['add'])){
                     </div>
                     <p><a href="category.php?cat=all" ><b style="font-size: 18px;">สินค้าทั้งหมด</b></a></p>
                 </div>
-
-                <div class="col" id="content">
-                    <div class="row" id="colum1">
-                    <?php
-                    if(isset($_GET['cat'])){
+                    
+                <?php
+                if(isset($_GET['idg'])){
       
-                        $cate = $_GET['cat'];
-                        if($cate == 'all'){
-                          $query = "SELECT * FROM product";
-                          $ret = $db->query($query);
-                          while($row = $ret->fetchArray(SQLITE3_ASSOC)){
-                            card($row['name'], $row['price'], $row['pic1'], $row['proid'], $row['brand']);
-                            }
-                        }
-                        else{
-                          $query = "SELECT * FROM product where brand = '$cate'";
-                          $ret = $db->query($query);
-                          while($row = $ret->fetchArray(SQLITE3_ASSOC)){
-                            card($row['name'], $row['price'], $row['pic1'], $row['proid'], $row['brand']);
-                            }
-                        }
-                      }
-                    elseif(isset($_GET['search'])){
-                        $search = $_GET['search'];
-                        $query = "SELECT * from product where brand like '%$search%'";
-                        $ret = $db->query($query);
-                          while($row = $ret->fetchArray(SQLITE3_ASSOC)){
-                            card($row['name'], $row['price'], $row['pic1'], $row['proid'], $row['brand']);
-                            }
-                      }
-                    ?>
-                    </div>
-                </div>
+                    $cate = $_GET['idg'];
+                    $query = "SELECT * FROM product WHERE proid = '$cate'";
+                    $ret = $db->query($query);
+                    $row = $ret->fetchArray(SQLITE3_ASSOC);
+                    detail($row['desc'], $row['price'], $row['brand'], $row['pic1'], $row['pic2'], $row['pic3'], $row['pic4'], $row['proid'], $row['quantity']);
+                }
+                ?>
+
             </div>
         </div>
     </div>
