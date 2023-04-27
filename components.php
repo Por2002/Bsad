@@ -27,7 +27,7 @@
               </nav>
               <nav class="navbar navbar-expand-right">
                   <form class="d-flex m-0" role="search" action="category.php" method="GET">
-                      <input class="form-control me-2" type="search" placeholder="ค้นหา" aria-label="Search" id="boxsearch">
+                    <input class="form-control me-2" type="text" name="search" placeholder="ค้นหา" aria-label="Search" id="boxsearch">
                   </form>
                   
                   <button class="navbar-toggler" href="cart.php" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
