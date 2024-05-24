@@ -51,6 +51,7 @@ if(isset($_POST['add'])){
     <link rel="stylesheet" href="style/navbar.css">
     <link rel="stylesheet" href="style/ooter.css">
     <link rel="stylesheet" href="style/cart.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Document</title>
 
     <style>
